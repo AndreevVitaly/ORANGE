@@ -20,6 +20,9 @@ wheels/
 *.egg
 MANIFEST
 
+# Qwen
+.qwen/
+
 # Django
 *.log
 local_settings.py
