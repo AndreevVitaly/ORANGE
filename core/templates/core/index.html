@@ -41,107 +41,30 @@
         </p>
         
         <div class="row g-4">
-            <!-- Card 1: Йога -->
+            {% for service in services %}
+            <!-- Card {{ forloop.counter }}: {{ service.title }} -->
             <div class="col-md-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1599447421405-0c1a11438263?w=400&h=250&fit=crop" 
-                         alt="Йога" 
-                         class="card-img-top">
+                    {% if service.image %}
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" class="card-img-top">
+                    {% else %}
+                    <div class="card-img-placeholder">
+                        <span>✨</span>
+                    </div>
+                    {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">Йога</h5>
-                        <p class="card-text">
-                            Групповые и индивидуальные занятия для всех уровней подготовки.
-                            Йога для беременных.
-                        </p>
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description|truncatewords:15 }}</p>
+                        {% if service.price %}
+                        <p class="text-primary fw-bold">{{ service.price }} ₽ / {{ service.duration }} мин</p>
+                        {% endif %}
                         <a href="#" class="btn btn-outline">Подробнее</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Card 2: Массаж -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop" 
-                         alt="Массаж" 
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Массаж</h5>
-                        <p class="card-text">
-                            Классический, расслабляющий, лимфодренажный, антицеллюлитный, 
-                            лечебный, детский, Рейки.
-                        </p>
-                        <a href="#" class="btn btn-outline">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 3: Фитнес -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=250&fit=crop" 
-                         alt="Фитнес" 
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Фитнес</h5>
-                        <p class="card-text">
-                            Фитнес-тестирование, функциональная диагностика, 
-                            персональные тренировки.
-                        </p>
-                        <a href="#" class="btn btn-outline">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 4: Перманентный макияж -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=250&fit=crop" 
-                         alt="Перманентный макияж" 
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Перманентный макияж</h5>
-                        <p class="card-text">
-                            Профессиональное нанесение и удаление татуажа. 
-                            Безопасно и качественно.
-                        </p>
-                        <a href="#" class="btn btn-outline">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 5: Онлайн-занятия -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=400&h=250&fit=crop" 
-                         alt="Онлайн-занятия" 
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Онлайн-занятия</h5>
-                        <p class="card-text">
-                            Занимайтесь из дома в удобное время. 
-                            Персональные и групповые онлайн-сессии.
-                        </p>
-                        <a href="#" class="btn btn-outline">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 6: Консультации -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop" 
-                         alt="Консультации" 
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Консультации</h5>
-                        <p class="card-text">
-                            Индивидуальные консультации по здоровью, 
-                            питанию и образу жизни.
-                        </p>
-                        <a href="#" class="btn btn-outline">Подробнее</a>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            <p class="text-center">Услуги скоро будут добавлены</p>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -155,56 +78,29 @@
         </p>
         
         <div class="row g-4">
-            <!-- Master 1 -->
+            {% for master in masters %}
+            <!-- Master {{ forloop.counter }}: {{ master.first_name }} {{ master.last_name }} -->
             <div class="col-md-4">
                 <div class="card text-center h-100">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop" 
-                         alt="Инструктор по йоге" 
-                         class="card-img-top" 
-                         style="height: 250px; object-fit: cover;">
+                    {% if master.photo %}
+                    <img src="{{ master.photo.url }}" alt="{{ master.first_name }} {{ master.last_name }}" 
+                         class="card-img-top" style="height: 250px; object-fit: cover;">
+                    {% else %}
+                    <div class="master-avatar-placeholder">
+                        <span>👤</span>
+                    </div>
+                    {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">Имя Фамилия</h5>
-                        <p class="text-primary">Инструктор по йоге</p>
-                        <p class="card-text">
-                            Опыт работы 5+ лет. Сертифицированный специалист.
-                        </p>
+                        <h5 class="card-title">{{ master.first_name }} {{ master.last_name }}</h5>
+                        <p class="text-primary">{{ master.specialty }}</p>
+                        <p class="card-text">{{ master.bio|truncatewords:15 }}</p>
+                        <p class="text-muted small">Опыт: {{ master.experience }} лет</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Master 2 -->
-            <div class="col-md-4">
-                <div class="card text-center h-100">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop" 
-                         alt="Массажист" 
-                         class="card-img-top" 
-                         style="height: 250px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Имя Фамилия</h5>
-                        <p class="text-primary">Массажист</p>
-                        <p class="card-text">
-                            Опыт работы 10+ лет. Медицинское образование.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Master 3 -->
-            <div class="col-md-4">
-                <div class="card text-center h-100">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop" 
-                         alt="Фитнес-тренер" 
-                         class="card-img-top" 
-                         style="height: 250px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Имя Фамилия</h5>
-                        <p class="text-primary">Фитнес-тренер</p>
-                        <p class="card-text">
-                            Опыт работы 7+ лет. Персональный тренер.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            <p class="text-center">Мастера скоро будут добавлены</p>
+            {% endfor %}
         </div>
     </div>
 </section>
