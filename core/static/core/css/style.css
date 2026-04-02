@@ -434,21 +434,156 @@ section {
     background-color: var(--color-accent-dark);
 }
 
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section {
+        padding: 6rem 0 4rem;
+    }
+    
+    section {
+        padding: 4rem 0;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Типографика */
     .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-title {
         font-size: 2rem;
+        text-align: center;
     }
     
-    .btn {
-        padding: 0.6rem 1.2rem;
+    .hero-subtitle {
+        font-size: 1rem;
+        text-align: center;
     }
     
+    /* Hero секция */
+    .hero-section {
+        padding: 5rem 0 3rem;
+        min-height: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-image {
+        margin-top: 2rem;
+    }
+    
+    .hero-placeholder {
+        height: 250px;
+    }
+    
+    /* Навигация */
     .navbar-nav {
         background-color: var(--color-bg);
         padding: 1rem;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-md);
         margin-top: 1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-lg {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Карточки */
+    .card-img-placeholder {
+        height: 150px;
+        font-size: 3rem;
+    }
+    
+    .master-avatar-placeholder {
+        height: 150px;
+        font-size: 4rem;
+    }
+    
+    /* Таблица расписания */
+    .schedule-table {
+        font-size: 0.85rem;
+    }
+    
+    .schedule-table thead th,
+    .schedule-table tbody td {
+        padding: 0.5rem;
+    }
+    
+    /* Футер */
+    .site-footer {
+        padding: 2rem 0;
+    }
+    
+    .site-footer .col-md-4 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-placeholder {
+        height: 200px;
+        font-size: 3rem;
+    }
+    
+    .card-img-placeholder {
+        height: 120px;
+        font-size: 2.5rem;
+    }
+    
+    .master-avatar-placeholder {
+        height: 120px;
+        font-size: 3rem;
+    }
+    
+    /* Форма контактов */
+    .contact-form {
+        padding: 1rem;
+    }
+    
+    .contact-info {
+        padding: 1rem;
     }
 }
 
