@@ -23,9 +23,14 @@
             </div>
             <div class="col-lg-6">
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?w=600&h=500&fit=crop" 
-                         alt="Йога и медитация" 
-                         class="img-fluid rounded shadow-lg">
+                    <img src="https://source.unsplash.com/600x500/?yoga,meditation"
+                         alt="Йога и медитация"
+                         class="img-fluid rounded shadow-lg"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hero-placeholder" style="display: none;">
+                        <span>🧘</span>
+                        <p>Йога и медитация</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,6 +52,16 @@
                 <div class="card h-100">
                     {% if service.image %}
                     <img src="{{ service.image.url }}" alt="{{ service.title }}" class="card-img-top">
+                    {% elif 'йога' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?yoga" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'массаж' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?massage" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'фитнес' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?fitness" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'перманент' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?makeup" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'онлайн' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?online,yoga" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
                     {% else %}
                     <div class="card-img-placeholder">
                         <span>✨</span>
@@ -83,8 +98,20 @@
             <div class="col-md-4">
                 <div class="card text-center h-100">
                     {% if master.photo %}
-                    <img src="{{ master.photo.url }}" alt="{{ master.first_name }} {{ master.last_name }}" 
+                    <img src="{{ master.photo.url }}" alt="{{ master.first_name }} {{ master.last_name }}"
                          class="card-img-top" style="height: 250px; object-fit: cover;">
+                    {% elif 'йога' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?woman,yoga,instructor" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'массаж' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?man,masseur" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'фитнес' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?woman,fitness,trainer" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
                     {% else %}
                     <div class="master-avatar-placeholder">
                         <span>👤</span>
