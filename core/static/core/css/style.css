@@ -47,7 +47,7 @@
 body {
     font-family: var(--font-body);
     color: var(--color-text);
-    background: linear-gradient(to bottom left, #F5F0EB 0%, #FFFFFF 50%, #FDF8F5 100%);
+    background: linear-gradient(to bottom left, #E8D5C4 0%, #FFFFFF 50%, #F5E6D8 100%);
     background-attachment: fixed;
     line-height: 1.6;
     min-height: 100vh;
