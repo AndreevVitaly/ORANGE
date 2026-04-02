@@ -1,0 +1,316 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Апельсин — Оздоровительный центр в Светогорске{% endblock %}
+
+{% block content %}
+<!-- Hero Section / Главный экран -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-title">
+                    <span class="text-primary">Здоровье</span> и гармония<br>вашего тела
+                </h1>
+                <p class="hero-subtitle">
+                    Оздоровительный центр «Апельсин» — это пространство, где вы обретёте 
+                    внутреннее равновесие, физическую силу и душевное спокойствие.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary btn-lg">Наши услуги</a>
+                    <a href="#contacts" class="btn btn-outline btn-lg ms-2">Записаться</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <!-- Placeholder для изображения -->
+                    <div class="hero-placeholder">
+                        <span>🧘</span>
+                        <p>Фото центра</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section / Услуги -->
+<section id="services" class="section-alt">
+    <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <p class="section-subtitle">
+            Мы предлагаем комплексный подход к вашему здоровью и красоте
+        </p>
+        
+        <div class="row g-4">
+            <!-- Card 1: Йога -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>🧘</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Йога</h5>
+                        <p class="card-text">
+                            Групповые и индивидуальные занятия для всех уровней подготовки.
+                            Йога для беременных.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Массаж -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>💆</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Массаж</h5>
+                        <p class="card-text">
+                            Классический, расслабляющий, лимфодренажный, антицеллюлитный, 
+                            лечебный, детский, Рейки.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Фитнес -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>💪</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Фитнес</h5>
+                        <p class="card-text">
+                            Фитнес-тестирование, функциональная диагностика, 
+                            персональные тренировки.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4: Перманентный макияж -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>💄</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Перманентный макияж</h5>
+                        <p class="card-text">
+                            Профессиональное нанесение и удаление татуажа. 
+                            Безопасно и качественно.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 5: Онлайн-занятия -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>💻</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Онлайн-занятия</h5>
+                        <p class="card-text">
+                            Занимайтесь из дома в удобное время. 
+                            Персональные и групповые онлайн-сессии.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 6: Консультации -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-img-placeholder">
+                        <span>📋</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Консультации</h5>
+                        <p class="card-text">
+                            Индивидуальные консультации по здоровью, 
+                            питанию и образу жизни.
+                        </p>
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Masters Section / Мастера -->
+<section id="masters">
+    <div class="container">
+        <h2 class="section-title">Наши мастера</h2>
+        <p class="section-subtitle">
+            Профессионалы с многолетним опытом работы
+        </p>
+        
+        <div class="row g-4">
+            <!-- Master 1 -->
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="master-avatar-placeholder">
+                        <span>👩</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Имя Фамилия</h5>
+                        <p class="text-primary">Инструктор по йоге</p>
+                        <p class="card-text">
+                            Опыт работы 5+ лет. Сертифицированный специалист.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Master 2 -->
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="master-avatar-placeholder">
+                        <span>👨</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Имя Фамилия</h5>
+                        <p class="text-primary">Массажист</p>
+                        <p class="card-text">
+                            Опыт работы 10+ лет. Медицинское образование.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Master 3 -->
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="master-avatar-placeholder">
+                        <span>👩</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Имя Фамилия</h5>
+                        <p class="text-primary">Фитнес-тренер</p>
+                        <p class="card-text">
+                            Опыт работы 7+ лет. Персональный тренер.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Schedule Section / Расписание -->
+<section id="schedule" class="section-alt">
+    <div class="container">
+        <h2 class="section-title">Расписание занятий</h2>
+        <p class="section-subtitle">
+            Выберите удобное время для посещения
+        </p>
+        
+        <div class="table-responsive">
+            <table class="table table-hover schedule-table">
+                <thead>
+                    <tr>
+                        <th>Время</th>
+                        <th>Понедельник</th>
+                        <th>Среда</th>
+                        <th>Пятница</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00</td>
+                        <td>Йога (группа)</td>
+                        <td>Йога (группа)</td>
+                        <td>Йога (группа)</td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td>Массаж</td>
+                        <td>Массаж</td>
+                        <td>Массаж</td>
+                    </tr>
+                    <tr>
+                        <td>18:00</td>
+                        <td>Фитнес</td>
+                        <td>Фитнес</td>
+                        <td>Фитнес</td>
+                    </tr>
+                    <tr>
+                        <td>20:00</td>
+                        <td>Йога (онлайн)</td>
+                        <td>Йога (онлайн)</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary btn-lg">Записаться на занятие</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contacts Section / Контакты -->
+<section id="contacts">
+    <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <p class="section-subtitle">
+            Свяжитесь с нами любым удобным способом
+        </p>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <h4>Как нас найти</h4>
+                    <p>
+                        <strong>📍 Адрес:</strong><br>
+                        Ленинградская область, г. Светогорск, ул. Гарькавого
+                    </p>
+                    <p>
+                        <strong>📞 Телефон:</strong><br>
+                        <a href="tel:+79523837654">+7 (952) 383-76-54</a>
+                    </p>
+                    <p>
+                        <strong>⏰ Режим работы:</strong><br>
+                        Пн-Пт: 09:00 — 21:00<br>
+                        Сб-Вс: 10:00 — 18:00
+                    </p>
+                    
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-link btn-accent">VK</a>
+                        <a href="#" class="social-link btn-accent">Telegram</a>
+                        <a href="#" class="social-link btn-accent">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <form class="contact-form">
+                    <h4>Напишите нам</h4>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Ваше сообщение"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
