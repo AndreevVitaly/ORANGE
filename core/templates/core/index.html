@@ -1,0 +1,240 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Апельсин — Оздоровительный центр в Светогорске{% endblock %}
+
+{% block content %}
+<!-- Hero Section / Главный экран -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-title">
+                    <span class="text-primary">Здоровье</span> и гармония<br>вашего тела
+                </h1>
+                <p class="hero-subtitle">
+                    Оздоровительный центр «Апельсин» — это пространство, где вы обретёте 
+                    внутреннее равновесие, физическую силу и душевное спокойствие.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary btn-lg">Наши услуги</a>
+                    <a href="#contacts" class="btn btn-outline btn-lg ms-2">Записаться</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <img src="https://source.unsplash.com/600x500/?yoga,meditation"
+                         alt="Йога и медитация"
+                         class="img-fluid rounded shadow-lg"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hero-placeholder" style="display: none;">
+                        <span>🧘</span>
+                        <p>Йога и медитация</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section / Услуги -->
+<section id="services" class="section-alt">
+    <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <p class="section-subtitle">
+            Мы предлагаем комплексный подход к вашему здоровью и красоте
+        </p>
+        
+        <div class="row g-4">
+            {% for service in services %}
+            <!-- Card {{ forloop.counter }}: {{ service.title }} -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    {% if service.image %}
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" class="card-img-top">
+                    {% elif 'йога' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?yoga" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'массаж' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?massage" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'фитнес' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?fitness" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'перманент' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?makeup" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'онлайн' in service.title|lower %}
+                    <img src="https://source.unsplash.com/400x250/?online,yoga" alt="{{ service.title }}" class="card-img-top" onerror="this.parentElement.querySelector('.card-img-placeholder').style.display='flex'; this.style.display='none';">
+                    {% else %}
+                    <div class="card-img-placeholder">
+                        <span>✨</span>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description|truncatewords:15 }}</p>
+                        {% if service.price %}
+                        <p class="text-primary fw-bold">{{ service.price }} ₽ / {{ service.duration }} мин</p>
+                        {% endif %}
+                        <a href="#" class="btn btn-outline">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">Услуги скоро будут добавлены</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Masters Section / Мастера -->
+<section id="masters">
+    <div class="container">
+        <h2 class="section-title">Наши мастера</h2>
+        <p class="section-subtitle">
+            Профессионалы с многолетним опытом работы
+        </p>
+        
+        <div class="row g-4">
+            {% for master in masters %}
+            <!-- Master {{ forloop.counter }}: {{ master.first_name }} {{ master.last_name }} -->
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    {% if master.photo %}
+                    <img src="{{ master.photo.url }}" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;">
+                    {% elif 'йога' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?woman,yoga,instructor" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'массаж' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?man,masseur" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
+                    {% elif 'фитнес' in master.specialty|lower %}
+                    <img src="https://source.unsplash.com/300x300/?woman,fitness,trainer" alt="{{ master.first_name }} {{ master.last_name }}"
+                         class="card-img-top" style="height: 250px; object-fit: cover;"
+                         onerror="this.parentElement.querySelector('.master-avatar-placeholder').style.display='flex'; this.style.display='none';">
+                    {% else %}
+                    <div class="master-avatar-placeholder">
+                        <span>👤</span>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ master.first_name }} {{ master.last_name }}</h5>
+                        <p class="text-primary">{{ master.specialty }}</p>
+                        <p class="card-text">{{ master.bio|truncatewords:15 }}</p>
+                        <p class="text-muted small">Опыт: {{ master.experience }} лет</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">Мастера скоро будут добавлены</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Schedule Section / Расписание -->
+<section id="schedule" class="section-alt">
+    <div class="container">
+        <h2 class="section-title">Расписание занятий</h2>
+        <p class="section-subtitle">
+            Выберите удобное время для посещения
+        </p>
+        
+        <div class="table-responsive">
+            <table class="table table-hover schedule-table">
+                <thead>
+                    <tr>
+                        <th>Время</th>
+                        <th>Понедельник</th>
+                        <th>Среда</th>
+                        <th>Пятница</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00</td>
+                        <td>Йога (группа)</td>
+                        <td>Йога (группа)</td>
+                        <td>Йога (группа)</td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td>Массаж</td>
+                        <td>Массаж</td>
+                        <td>Массаж</td>
+                    </tr>
+                    <tr>
+                        <td>18:00</td>
+                        <td>Фитнес</td>
+                        <td>Фитнес</td>
+                        <td>Фитнес</td>
+                    </tr>
+                    <tr>
+                        <td>20:00</td>
+                        <td>Йога (онлайн)</td>
+                        <td>Йога (онлайн)</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary btn-lg">Записаться на занятие</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contacts Section / Контакты -->
+<section id="contacts">
+    <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <p class="section-subtitle">
+            Свяжитесь с нами любым удобным способом
+        </p>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <h4>Как нас найти</h4>
+                    <p>
+                        <strong>📍 Адрес:</strong><br>
+                        Ленинградская область, г. Светогорск, ул. Гарькавого
+                    </p>
+                    <p>
+                        <strong>📞 Телефон:</strong><br>
+                        <a href="tel:+79523837654">+7 (952) 383-76-54</a>
+                    </p>
+                    <p>
+                        <strong>⏰ Режим работы:</strong><br>
+                        Пн-Пт: 09:00 — 21:00<br>
+                        Сб-Вс: 10:00 — 18:00
+                    </p>
+                    
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-link btn-accent">VK</a>
+                        <a href="#" class="social-link btn-accent">Telegram</a>
+                        <a href="#" class="social-link btn-accent">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <form class="contact-form">
+                    <h4>Напишите нам</h4>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Ваше сообщение"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
