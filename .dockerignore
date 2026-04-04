@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Виртуальное окружение
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Docker
+.env
+docker-compose.override.yml
+
+# Git
+.git/
+.gitignore
+
+# Документация
+*.md
+README.txt

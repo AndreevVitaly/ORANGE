@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python *)",
+      "Bash(c:\\djangoproject\\orange\\venv\\scripts\\activate)",
+      "Bash(pip install *)",
+      "Bash(c:\\djangoproject\\orange\\venv\\scripts\\python.exe *)",
+      "Bash(git init)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git rm *)"
+    ]
+  },
+  "$version": 3
+}
