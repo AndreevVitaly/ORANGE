@@ -8,7 +8,9 @@
       "Bash(git init)",
       "Bash(git remote *)",
       "Bash(git add *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(dir *)",
+      "Bash(rmdir *)"
     ]
   },
   "$version": 3
