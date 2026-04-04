@@ -41,11 +41,10 @@ ENV/
 # Django
 *.log
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
-/media
-/staticfiles
-/static
+ORANGE/db.sqlite3
+ORANGE/db.sqlite3-journal
+ORANGE/media/
+ORANGE/staticfiles/
 
 # Node.js / React
 node_modules/

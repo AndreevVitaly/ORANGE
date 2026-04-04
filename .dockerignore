@@ -28,8 +28,8 @@ Thumbs.db
 # Django
 *.log
 db.sqlite3
-media/
-staticfiles/
+ORANGE/media/
+ORANGE/staticfiles/
 
 # Docker
 .env
@@ -41,4 +41,4 @@ docker-compose.override.yml
 
 # Документация
 *.md
-README.txt
+ORANGE/README.txt

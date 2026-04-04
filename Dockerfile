@@ -18,15 +18,15 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Копируем зависимости
-COPY ./ORANGE/requirements.txt .
+COPY ORANGE/requirements.txt .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Копируем проект
-COPY ./ORANGE /app
+COPY ORANGE/ /app/
 
 # Копируем и делаем исполняемым entrypoint
-COPY ./entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Создаём директорию для статики и медиа
