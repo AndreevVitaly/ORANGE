@@ -433,11 +433,15 @@ section {
    ============================================ */
 
 .social-links .social-link.btn-accent {
-    background-color: var(--color-accent);
+    background-color: #FFFFFF !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary);
 }
 
 .social-links .social-link.btn-accent:hover {
-    background-color: var(--color-accent-dark);
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: var(--color-primary) !important;
+    border-color: var(--color-primary);
 }
 
 @media (max-width: 992px) {
