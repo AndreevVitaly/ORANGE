@@ -217,7 +217,7 @@ section {
 /* Карточка с полноэкранным изображением */
 .card-image-overlay {
     position: relative;
-    min-height: 300px;
+    min-height: 450px;
     overflow: hidden;
 }
 
@@ -246,11 +246,11 @@ section {
     position: relative;
     z-index: 2;
     color: #FFFFFF;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    min-height: 300px;
+    min-height: 450px;
 }
 
 .card-image-overlay .card-content .card-title {
