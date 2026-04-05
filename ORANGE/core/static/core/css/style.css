@@ -586,10 +586,29 @@ section {
         height: 150px;
         font-size: 3rem;
     }
-    
+
     .master-avatar-placeholder {
         height: 150px;
         font-size: 4rem;
+    }
+
+    /* Карточки с изображением — мобильная версия */
+    .card-image-overlay {
+        min-height: 300px;
+    }
+
+    .card-image-overlay .card-content {
+        min-height: 300px;
+        padding: 1rem 1rem 2rem;
+    }
+
+    .card-image-overlay .card-content .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-image-overlay .card-content .card-text {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
     }
     
     /* Таблица расписания */
