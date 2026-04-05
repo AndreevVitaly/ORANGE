@@ -10,7 +10,10 @@
       "Bash(git add *)",
       "Bash(git rm *)",
       "Bash(dir *)",
-      "Bash(rmdir *)"
+      "Bash(rmdir *)",
+      "Bash(git commit *)",
+      "Bash(r *)",
+      "Bash(@echo *)"
     ]
   },
   "$version": 3
