@@ -19,10 +19,15 @@
       </div>
       <div class="col-lg-6">
         <div class="hero-image">
-          <div class="hero-placeholder">
-            <span>🧘</span>
-            <p>Йога и медитация</p>
-          </div>
+          <img
+            src="{% static 'core/image-05-04-26-09-31.png' %}"
+            alt="Йога-студия"
+            style="
+              width: 100%;
+              border-radius: 20px;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+            "
+          />
         </div>
       </div>
     </div>
@@ -38,35 +43,41 @@
     </p>
 
     <div class="row g-4">
-      {% for service in services %}
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="card h-100">
-          {% if service.image %}
           <img
-            src="{{ service.image.url }}"
-            alt="{{ service.title }}"
+            src="{% static 'core/image-05-04-26-09-31.png' %}"
+            alt="Йога"
             class="card-img-top"
+            style="height: 250px; object-fit: cover"
           />
-          {% else %}
-          <div class="card-img-placeholder">
-            <span>✨</span>
-          </div>
-          {% endif %}
           <div class="card-body">
-            <h5 class="card-title">{{ service.title }}</h5>
-            <p class="card-text">{{ service.description|truncatewords:15 }}</p>
-            {% if service.price %}
-            <p class="text-primary fw-bold">
-              {{ service.price }} ₽ / {{ service.duration }} мин
+            <h5 class="card-title">Йога и медитация</h5>
+            <p class="card-text">
+              Групповые и индивидуальные занятия для обретения гармонии тела и
+              духа
             </p>
-            {% endif %}
             <a href="#" class="btn btn-outline">Подробнее</a>
           </div>
         </div>
       </div>
-      {% empty %}
-      <p class="text-center">Услуги скоро будут добавлены</p>
-      {% endfor %}
+      <div class="col-md-6">
+        <div class="card h-100">
+          <img
+            src="{% static 'core/image-05-04-26-09-31-1.png' %}"
+            alt="Массаж"
+            class="card-img-top"
+            style="height: 250px; object-fit: cover"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Массаж</h5>
+            <p class="card-text">
+              Профессиональный массаж для расслабления и восстановления
+            </p>
+            <a href="#" class="btn btn-outline">Подробнее</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
