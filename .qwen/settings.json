@@ -20,7 +20,10 @@
       "Bash(docker info)",
       "Bash(copy *)",
       "Bash(move *)",
-      "Bash(ren *)"
+      "Bash(ren *)",
+      "Bash(nslookup *)",
+      "Bash(ping *)",
+      "Bash(del *)"
     ]
   },
   "$version": 3
