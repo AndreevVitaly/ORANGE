@@ -13,7 +13,14 @@
       "Bash(rmdir *)",
       "Bash(git commit *)",
       "Bash(r *)",
-      "Bash(@echo *)"
+      "Bash(@echo *)",
+      "Bash(git push)",
+      "Bash(docker compose *)",
+      "Bash(docker-compose *)",
+      "Bash(docker info)",
+      "Bash(copy *)",
+      "Bash(move *)",
+      "Bash(ren *)"
     ]
   },
   "$version": 3
