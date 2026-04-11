@@ -23,7 +23,8 @@
       "Bash(ren *)",
       "Bash(nslookup *)",
       "Bash(ping *)",
-      "Bash(del *)"
+      "Bash(del *)",
+      "WebSearch"
     ]
   },
   "$version": 3
