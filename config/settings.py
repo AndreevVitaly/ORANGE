@@ -17,9 +17,11 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Загрузка переменных окружения из .env файла
-# override=True гарантирует что значения из .env перезаписывают переменные окружения
-load_dotenv(BASE_DIR / ".env.dev", override=True)
+# Загрузка переменных окружения из .env файла (только для локальной разработки)
+# В Docker переменные приходят из окружения контейнера (env_file в docker-compose)
+env_file = BASE_DIR / ".env.dev"
+if env_file.exists():
+    load_dotenv(env_file)
 
 
 # Quick-start development settings - unsuitable for production
