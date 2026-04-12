@@ -108,7 +108,9 @@ img {
     max-width: 100%;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    word-break: break-word;
     hyphens: auto;
+    display: block;
 }
 
 @media (max-width: 992px) {
@@ -119,36 +121,53 @@ img {
 
 @media (max-width: 768px) {
     .logo-text {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        gap: 2px;
     }
 
     .logo-subtitle {
-        font-size: clamp(0.35rem, 1.8vw, 0.45rem);
-        letter-spacing: 0.3px;
-        white-space: normal;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-text {
-        font-size: 1.1rem;
-    }
-
-    .logo-subtitle {
-        font-size: clamp(0.3rem, 2vw, 0.4rem);
+        font-size: clamp(0.3rem, 1.5vw, 0.45rem);
         letter-spacing: 0.2px;
-        line-height: 1.1;
+        white-space: normal;
+        margin-top: 2px;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 576px) {
     .logo-text {
         font-size: 1rem;
     }
 
     .logo-subtitle {
-        font-size: 0.3rem;
+        font-size: clamp(0.25rem, 1.8vw, 0.35rem);
+        letter-spacing: 0.1px;
         line-height: 1.1;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 0.95rem;
+    }
+
+    .logo-subtitle {
+        font-size: clamp(0.22rem, 2vw, 0.32rem);
+        letter-spacing: 0;
+        line-height: 1.1;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo-text {
+        font-size: 0.85rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.2rem;
+        line-height: 1;
+        margin-top: 5px;
     }
 }
 
