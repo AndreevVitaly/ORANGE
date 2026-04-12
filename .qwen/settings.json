@@ -32,7 +32,8 @@
       "Bash(call *)",
       "Bash(tasklist)",
       "Bash(findstr *)",
-      "Bash(pip show *)"
+      "Bash(pip show *)",
+      "Bash(ssh *)"
     ]
   },
   "$version": 3
