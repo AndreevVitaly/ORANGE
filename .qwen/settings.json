@@ -24,7 +24,15 @@
       "Bash(nslookup *)",
       "Bash(ping *)",
       "Bash(del *)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git pull)",
+      "Bash(taskkill *)",
+      "Bash(venv\\scripts\\activate)",
+      "Bash(set *)",
+      "Bash(call *)",
+      "Bash(tasklist)",
+      "Bash(findstr *)",
+      "Bash(pip show *)"
     ]
   },
   "$version": 3

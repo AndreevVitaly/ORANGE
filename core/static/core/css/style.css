@@ -92,6 +92,18 @@ img {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.logo-subtitle {
+    font-size: 0.55rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .navbar-nav .nav-link {

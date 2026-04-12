@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./ORANGE:/app
+      - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     command: >
