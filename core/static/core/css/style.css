@@ -104,6 +104,45 @@ img {
     color: var(--color-text-light);
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    white-space: nowrap;
+}
+
+@media (max-width: 992px) {
+    .logo-subtitle {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.3rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.45rem;
+        letter-spacing: 0.3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.4rem;
+        letter-spacing: 0.2px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.35rem;
+    }
 }
 
 .navbar-nav .nav-link {
