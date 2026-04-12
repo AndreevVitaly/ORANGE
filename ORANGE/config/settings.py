@@ -87,12 +87,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": config("DB_ENGINE", default="django.db.backends.sqlite3"),
-        "NAME": config("POSTGRES_DB", default=str(BASE_DIR / "db.sqlite3")),
-        "USER": config("POSTGRES_USER", default=""),
-        "PASSWORD": config("POSTGRES_PASSWORD", default=""),
-        "HOST": config("POSTGRES_HOST", default=""),
-        "PORT": config("POSTGRES_PORT", default=""),
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("POSTGRES_DB", str(BASE_DIR / "db.sqlite3")),
+        "USER": os.environ.get("POSTGRES_USER", ""),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", ""),
+        "HOST": os.environ.get("POSTGRES_HOST", ""),
+        "PORT": os.environ.get("POSTGRES_PORT", ""),
     }
 }
 
