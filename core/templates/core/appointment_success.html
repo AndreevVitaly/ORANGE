@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block title %}Заявка отправлена — центр «Апельсин»{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="container">
+    <div class="success-card text-center">
+      <div class="success-mark">✓</div>
+      <h1 class="page-title">Заявка отправлена</h1>
+      <p class="lead">Администратор свяжется с тобой и подтвердит дату и время.</p>
+      <a href="{% url 'core:index' %}" class="btn btn-primary">Вернуться на главную</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

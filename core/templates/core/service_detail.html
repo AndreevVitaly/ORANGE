@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ service.title }} в Выборге — центр «Апельсин»{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        {% if service.image %}
+          <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid rounded shadow">
+        {% else %}
+          <img src="{% static 'core/image-05-04-26-09-31.png' %}" alt="{{ service.title }}" class="img-fluid rounded shadow">
+        {% endif %}
+      </div>
+      <div class="col-lg-6">
+        <a href="{% url 'core:index' %}#services" class="back-link">← Все услуги</a>
+        <h1 class="page-title">{{ service.title }}</h1>
+        <p class="lead">{{ service.description }}</p>
+        <div class="service-facts">
+          <span><strong>Длительность:</strong> {{ service.duration }} мин.</span>
+          {% if service.price %}
+            <span><strong>Стоимость:</strong> {{ service.price|floatformat:0 }} ₽</span>
+          {% endif %}
+        </div>
+        <a href="{% url 'core:appointment_create' service.pk %}" class="btn btn-primary btn-lg">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

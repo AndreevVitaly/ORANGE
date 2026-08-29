@@ -800,3 +800,118 @@ section {
 .shadow {
     box-shadow: var(--shadow-md);
 }
+
+/* Internal pages and database-driven cards */
+.site-logo {
+    width: auto;
+    height: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.footer-logo {
+    width: auto;
+    height: 28px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.message-container {
+    position: fixed;
+    z-index: 1100;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 720px;
+}
+
+.page-section {
+    min-height: 65vh;
+    padding-top: 9rem;
+}
+
+.page-title {
+    margin: 1rem 0 1.5rem;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+}
+
+.back-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.service-card {
+    overflow: hidden;
+}
+
+.service-card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: var(--color-text-light);
+}
+
+.service-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin: 2rem 0;
+}
+
+.master-photo {
+    height: 250px;
+    object-fit: cover;
+}
+
+.form-page-card,
+.success-card {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    background: var(--color-bg);
+    box-shadow: var(--shadow-lg);
+}
+
+.login-card {
+    max-width: 520px;
+}
+
+.success-mark {
+    display: grid;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .page-section {
+        padding-top: 7rem;
+    }
+
+    .form-page-card,
+    .success-card {
+        padding: 1.25rem;
+    }
+
+    .message-container {
+        top: 78px;
+        width: calc(100% - 1.5rem);
+    }
+}

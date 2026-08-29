@@ -2,154 +2,87 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}Апельсин — Оздоровительный центр{% endblock %}
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Оздоровительный центр «Апельсин» в Выборге: йога, массаж, фитнес и запись к специалистам.{% endblock %}">
+    <title>{% block title %}Апельсин — оздоровительный центр в Выборге{% endblock %}</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="{% static 'core/favicon.png' %}"
-      type="image/png"
-      sizes="512x512"
-    />
-    <link rel="apple-touch-icon" href="{% static 'core/favicon.png' %}" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="icon" href="{% static 'core/favicon.png' %}" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="{% static 'core/favicon.png' %}">
     {% block extra_css %}{% endblock %}
   </head>
   <body>
-    <!-- Header / Навигация -->
     <header class="site-header">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="{% url 'core:index' %}">
             <span class="logo-text">
-              <img
-                src="{% static 'core/favicon.png' %}"
-                alt="Апельсин"
-                style="
-                  height: 32px;
-                  width: auto;
-                  vertical-align: middle;
-                  margin-right: 8px;
-                "
-              />
+              <img src="{% static 'core/favicon.png' %}" alt="Апельсин" class="site-logo">
               АПЕЛЬСИН
-              <span class="logo-subtitle">реклама разработки сайтов</span>
+              <span class="logo-subtitle">оздоровительный центр</span>
             </span>
           </a>
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Открыть меню">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#services">Услуги</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#masters">Мастера</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#schedule">Расписание</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contacts">Контакты</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-primary ms-2" href="{% url 'crm:login' %}"
-                  >Личный кабинет</a
-                >
-              </li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#services">Услуги</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#masters">Мастера</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#schedule">Расписание</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#contacts">Контакты</a></li>
+              <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="{% url 'crm:login' %}">Для сотрудников</a></li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
 
-    <!-- Основной контент -->
+    {% if messages %}
+      <div class="message-container container">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <main>{% block content %}{% endblock %}</main>
 
-    <!-- Footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h5>
-              <img
-                src="{% static 'core/favicon.png' %}"
-                alt="Апельсин"
-                style="
-                  height: 28px;
-                  width: auto;
-                  vertical-align: middle;
-                  margin-right: 8px;
-                "
-              />
-              АПЕЛЬСИН
-            </h5>
-            <p>Оздоровительный центр<br />Йога • Массаж • Фитнес</p>
+            <h5><img src="{% static 'core/favicon.png' %}" alt="" class="footer-logo">АПЕЛЬСИН</h5>
+            <p>Оздоровительный центр<br>Йога • Массаж • Фитнес</p>
           </div>
           <div class="col-md-4">
             <h5>Контакты</h5>
-            <p>
-              📍 г. Выборг, ул. Крепостная<br />
-              📞 <a href="tel:+79218789297">+7 (921) 878-92-97</a>
-            </p>
+            <p>г. Выборг, ул. Крепостная<br><a href="tel:+79218789297">+7 (921) 878-92-97</a></p>
           </div>
           <div class="col-md-4">
             <h5>Мы в соцсетях</h5>
             <div class="social-links">
-              <a href="#" class="social-link">VK</a>
-              <a href="#" class="social-link">Telegram</a>
-              <a href="#" class="social-link">WhatsApp</a>
-              <a
-                href="https://max.ru/u/f9LHodD0cOK1vptyFOWwRec7T0n0iY5rUwEqykC6sgUwek3d806hUF-Ta9o"
-                target="_blank"
-                class="social-link"
-                >MAX</a
-              >
+              <a href="https://max.ru/u/f9LHodD0cOK1vptyFOWwRec7T0n0iY5rUwEqykC6sgUwek3d806hUF-Ta9o" target="_blank" rel="noopener" class="social-link">MAX</a>
             </div>
           </div>
         </div>
-        <hr />
-        <p class="text-center mb-0">
-          &copy; 2026 Апельсин. Все права защищены.
-        </p>
+        <hr>
+        <p class="text-center mb-0">&copy; 2026 Апельсин. Все права защищены.</p>
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS -->
     <script src="{% static 'core/js/main.js' %}"></script>
-
     {% block extra_js %}{% endblock %}
   </body>
 </html>
