@@ -1,8 +1,8 @@
-from django import forms
+﻿from django import forms
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
-from .models import Appointment, ContactMessage, Master
+from .models import Appointment, ContactMessage, Master, validate_appointment_slot
 
 
 class AppointmentForm(forms.ModelForm):
@@ -45,22 +45,37 @@ class AppointmentForm(forms.ModelForm):
                 attrs={"class": "form-control", "placeholder": "Необязательно"}
             ),
             "master": forms.Select(attrs={"class": "form-select"}),
-            "comment": forms.Textarea(
-                attrs={"class": "form-control", "rows": 4}
-            ),
+            "comment": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
         }
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, service=None, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["master"].queryset = Master.objects.filter(is_active=True)
+        self.service = service
+        masters = Master.objects.filter(is_active=True)
+        if service:
+            masters = masters.filter(services=service).distinct()
+        self.fields["master"].queryset = masters
         self.fields["master"].required = False
         self.fields["master"].empty_label = "Подберем специалиста"
+        if not masters.exists():
+            self.fields["master"].help_text = "Для этой услуги пока не назначены специалисты."
 
     def clean_appointment_date(self):
         appointment_date = self.cleaned_data["appointment_date"]
         if appointment_date <= timezone.now():
             raise ValidationError("Выбери дату и время в будущем.")
         return appointment_date
+
+    def clean(self):
+        cleaned_data = super().clean()
+        master = cleaned_data.get("master")
+        appointment_date = cleaned_data.get("appointment_date")
+        if self.service and master and appointment_date:
+            try:
+                validate_appointment_slot(master, self.service, appointment_date)
+            except ValidationError as error:
+                self.add_error("appointment_date", error)
+        return cleaned_data
 
 
 class ContactMessageForm(forms.ModelForm):

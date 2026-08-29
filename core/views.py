@@ -1,4 +1,4 @@
-from django.contrib import messages
+﻿from django.contrib import messages
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -19,14 +19,19 @@ def index(request):
 
 def service_detail(request, pk):
     service = get_object_or_404(Service, pk=pk, is_active=True)
-    return render(request, "core/service_detail.html", {"service": service})
+    masters = service.masters.filter(is_active=True)
+    return render(
+        request,
+        "core/service_detail.html",
+        {"service": service, "masters": masters},
+    )
 
 
 def appointment_create(request, pk):
     service = get_object_or_404(Service, pk=pk, is_active=True)
 
     if request.method == "POST":
-        form = AppointmentForm(request.POST)
+        form = AppointmentForm(request.POST, service=service)
         if form.is_valid():
             with transaction.atomic():
                 phone = normalize_phone(form.cleaned_data["client_phone"])
@@ -53,6 +58,7 @@ def appointment_create(request, pk):
                 appointment.client = client
                 appointment.client_phone = phone
                 appointment.service = service
+                appointment.full_clean()
                 appointment.save()
             messages.success(
                 request,
@@ -60,7 +66,7 @@ def appointment_create(request, pk):
             )
             return redirect("core:appointment_success")
     else:
-        form = AppointmentForm()
+        form = AppointmentForm(service=service)
 
     return render(
         request,

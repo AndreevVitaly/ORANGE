@@ -1,6 +1,6 @@
-from django.contrib import admin
+﻿from django.contrib import admin
 
-from .models import Appointment, Client, ContactMessage, Master, Review, Service
+from .models import Appointment, Client, ContactMessage, Master, Review, Service, WorkSchedule
 
 
 @admin.register(Service)
@@ -10,6 +10,12 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ["title", "description"]
     list_editable = ["is_active"]
     readonly_fields = ["created_at"]
+
+
+class WorkScheduleInline(admin.TabularInline):
+    model = WorkSchedule
+    extra = 1
+    fields = ["weekday", "start_time", "end_time", "is_active"]
 
 
 @admin.register(Master)
@@ -22,10 +28,12 @@ class MasterAdmin(admin.ModelAdmin):
         "is_active",
         "created_at",
     ]
-    list_filter = ["is_active", "specialty"]
+    list_filter = ["is_active", "specialty", "services"]
     search_fields = ["first_name", "last_name", "specialty"]
     list_editable = ["is_active"]
     readonly_fields = ["created_at"]
+    filter_horizontal = ["services"]
+    inlines = [WorkScheduleInline]
 
 
 class AppointmentInline(admin.TabularInline):
@@ -49,6 +57,13 @@ class ClientAdmin(admin.ModelAdmin):
         return client.appointments.count()
 
 
+@admin.register(WorkSchedule)
+class WorkScheduleAdmin(admin.ModelAdmin):
+    list_display = ["master", "weekday", "start_time", "end_time", "is_active"]
+    list_filter = ["weekday", "is_active", "master"]
+    search_fields = ["master__first_name", "master__last_name"]
+
+
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = [
@@ -59,7 +74,7 @@ class AppointmentAdmin(admin.ModelAdmin):
         "status",
         "created_at",
     ]
-    list_filter = ["status", "service", "appointment_date"]
+    list_filter = ["status", "service", "master", "appointment_date"]
     search_fields = [
         "client__name",
         "client__phone",

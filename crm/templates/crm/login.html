@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+﻿{% extends "core/base.html" %}
 
 {% block title %}Вход для сотрудников — центр «Апельсин»{% endblock %}
 
@@ -15,7 +15,7 @@
 
       <form method="post">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next|default:'/admin/' }}">
+        <input type="hidden" name="next" value="{{ next|default:'/crm/' }}">
 
         <div class="mb-3">
           <label for="{{ form.username.id_for_label }}" class="form-label">Имя пользователя</label>

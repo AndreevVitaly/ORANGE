@@ -1,0 +1,24 @@
+﻿{% extends "core/base.html" %}
+
+{% block content %}
+<section class="page-section section-alt crm-page">
+  <div class="container">
+    <div class="crm-shell">
+      <aside class="crm-sidebar">
+        <h2 class="crm-title">CRM</h2>
+        <a href="{% url 'crm:dashboard' %}">Дашборд</a>
+        <a href="{% url 'crm:appointments' %}">Заявки</a>
+        <a href="{% url 'crm:clients' %}">Клиенты</a>
+        <a href="{% url 'admin:index' %}">Django Admin</a>
+        <form method="post" action="{% url 'crm:logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline w-100 mt-3">Выйти</button>
+        </form>
+      </aside>
+      <div class="crm-content">
+        {% block crm_content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+﻿{% extends "crm/base_crm.html" %}
+
+{% block title %}CRM — заявки{% endblock %}
+
+{% block crm_content %}
+<div class="d-flex flex-wrap justify-content-between gap-3 align-items-center mb-4">
+  <h1 class="page-title mb-0">Заявки</h1>
+  <div class="crm-filter-links">
+    <a href="{% url 'crm:appointments' %}" class="{% if not status %}active{% endif %}">Все</a>
+    {% for code, label in status_choices %}
+      <a href="?status={{ code }}" class="{% if status == code %}active{% endif %}">{{ label }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="crm-card">
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>Клиент</th><th>Телефон</th><th>Услуга</th><th>Мастер</th><th>Дата</th><th>Статус</th><th></th></tr></thead>
+      <tbody>
+        {% for appointment in appointments %}
+          <tr>
+            <td>
+              {% if appointment.client %}
+                <a href="{% url 'crm:client_detail' appointment.client.pk %}">{{ appointment.client.name }}</a>
+              {% else %}
+                {{ appointment.client_name }}
+              {% endif %}
+            </td>
+            <td>{{ appointment.client_phone }}</td>
+            <td>{{ appointment.service }}</td>
+            <td>{{ appointment.master|default:"Подобрать" }}</td>
+            <td>{{ appointment.appointment_date|date:"d.m.Y H:i" }}</td>
+            <td><span class="crm-badge crm-badge-{{ appointment.status }}">{{ appointment.get_status_display }}</span></td>
+            <td>
+              <form method="post" action="{% url 'crm:appointment_update_status' appointment.pk %}" class="crm-status-form">
+                {% csrf_token %}
+                <select name="status" class="form-select form-select-sm">
+                  {% for code, label in status_choices %}
+                    <option value="{{ code }}" {% if appointment.status == code %}selected{% endif %}>{{ label }}</option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-primary btn-sm" type="submit">OK</button>
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="7">Заявок пока нет.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

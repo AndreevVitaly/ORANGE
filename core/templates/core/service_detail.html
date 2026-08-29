@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+﻿{% extends "core/base.html" %}
 {% load static %}
 
 {% block title %}{{ service.title }} в Выборге — центр «Апельсин»{% endblock %}
@@ -11,7 +11,7 @@
         {% if service.image %}
           <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid rounded shadow">
         {% else %}
-          <img src="{% static 'core/image-05-04-26-09-31.png' %}" alt="{{ service.title }}" class="img-fluid rounded shadow">
+          <img src="{% if 'массаж' in service.title|lower %}{% static 'core/image-05-04-26-09-31-1.png' %}{% else %}{% static 'core/image-05-04-26-09-31.png' %}{% endif %}" alt="{{ service.title }}" class="img-fluid rounded shadow">
         {% endif %}
       </div>
       <div class="col-lg-6">
@@ -24,6 +24,14 @@
             <span><strong>Стоимость:</strong> {{ service.price|floatformat:0 }} ₽</span>
           {% endif %}
         </div>
+        <div class="service-masters">
+          <strong>Специалисты:</strong>
+          {% for master in masters %}
+            {{ master }}{% if not forloop.last %}, {% endif %}
+          {% empty %}
+            специалиста подберет администратор.
+          {% endfor %}
+        </div>
         <a href="{% url 'core:appointment_create' service.pk %}" class="btn btn-primary btn-lg">
           Записаться
         </a>
@@ -32,3 +40,4 @@
   </div>
 </section>
 {% endblock %}
+

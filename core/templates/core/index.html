@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+﻿{% extends "core/base.html" %}
 {% load static %}
 
 {% block title %}Апельсин — оздоровительный центр в Выборге{% endblock %}
@@ -41,7 +41,7 @@
             {% if service.image %}
               <img src="{{ service.image.url }}" alt="{{ service.title }}" class="service-card-image">
             {% else %}
-              <img src="{% if forloop.counter|divisibleby:2 %}{% static 'core/image-05-04-26-09-31-1.png' %}{% else %}{% static 'core/image-05-04-26-09-31.png' %}{% endif %}" alt="{{ service.title }}" class="service-card-image">
+              <img src="{% if 'массаж' in service.title|lower %}{% static 'core/image-05-04-26-09-31-1.png' %}{% else %}{% static 'core/image-05-04-26-09-31.png' %}{% endif %}" alt="{{ service.title }}" class="service-card-image">
             {% endif %}
             <div class="card-body d-flex flex-column">
               <h3 class="card-title h5">{{ service.title }}</h3>
@@ -137,3 +137,4 @@
   </div>
 </section>
 {% endblock %}
+

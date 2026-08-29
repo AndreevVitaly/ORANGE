@@ -1,0 +1,38 @@
+﻿{% extends "crm/base_crm.html" %}
+
+{% block title %}CRM — {{ client_item.name }}{% endblock %}
+
+{% block crm_content %}
+<a href="{% url 'crm:clients' %}" class="back-link">← Все клиенты</a>
+<h1 class="page-title">{{ client_item.name }}</h1>
+
+<div class="crm-grid-two">
+  <div class="crm-card">
+    <h2 class="h4">Контакты</h2>
+    <p><strong>Телефон:</strong> {{ client_item.phone }}</p>
+    <p><strong>Email:</strong> {{ client_item.email|default:"—" }}</p>
+    <p><strong>Дата рождения:</strong> {{ client_item.birth_date|date:"d.m.Y"|default:"—" }}</p>
+    <p><strong>Заметки:</strong><br>{{ client_item.notes|linebreaksbr|default:"—" }}</p>
+  </div>
+  <div class="crm-card">
+    <h2 class="h4">История записей</h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead><tr><th>Дата</th><th>Услуга</th><th>Мастер</th><th>Статус</th></tr></thead>
+        <tbody>
+          {% for appointment in appointments %}
+            <tr>
+              <td>{{ appointment.appointment_date|date:"d.m.Y H:i" }}</td>
+              <td>{{ appointment.service }}</td>
+              <td>{{ appointment.master|default:"—" }}</td>
+              <td><span class="crm-badge crm-badge-{{ appointment.status }}">{{ appointment.get_status_display }}</span></td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="4">Записей пока нет.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
