@@ -3,19 +3,42 @@
 {% block title %}CRM — дашборд{% endblock %}
 
 {% block crm_content %}
-<h1 class="page-title">Дашборд</h1>
-<div class="crm-stats">
-  <div><span>{{ pending_count }}</span><small>Новых заявок</small></div>
-  <div><span>{{ today_count }}</span><small>Записей сегодня</small></div>
-  <div><span>{{ clients_count }}</span><small>Клиентов</small></div>
-  <div><span>{{ messages_count }}</span><small>Новых сообщений</small></div>
+<div class="crm-hero-v2">
+  <div>
+    <p class="crm-eyebrow-v2">Сегодня в центре</p>
+    <h1>Дашборд</h1>
+    <span>Быстрый обзор заявок, клиентов и активности сайта.</span>
+  </div>
+  <a href="{% url 'crm:appointments' %}" class="btn btn-primary">Открыть заявки</a>
 </div>
 
-<div class="crm-grid-two mt-4">
-  <div class="crm-card">
-    <h2 class="h4">Последние заявки</h2>
+<div class="crm-stats-v2">
+  <article>
+    <small>Новых заявок</small>
+    <strong>{{ pending_count }}</strong>
+  </article>
+  <article>
+    <small>Записей сегодня</small>
+    <strong>{{ today_count }}</strong>
+  </article>
+  <article>
+    <small>Клиентов</small>
+    <strong>{{ clients_count }}</strong>
+  </article>
+  <article>
+    <small>Новых сообщений</small>
+    <strong>{{ messages_count }}</strong>
+  </article>
+</div>
+
+<div class="crm-grid-v2">
+  <section class="crm-panel-v2 crm-panel-wide-v2">
+    <div class="crm-panel-head-v2">
+      <h2>Последние заявки</h2>
+      <a href="{% url 'crm:appointments' %}">Все заявки</a>
+    </div>
     <div class="table-responsive">
-      <table class="table align-middle">
+      <table class="table crm-table-v2 align-middle">
         <thead><tr><th>Клиент</th><th>Услуга</th><th>Время</th><th>Статус</th></tr></thead>
         <tbody>
           {% for appointment in latest_appointments %}
@@ -26,17 +49,20 @@
               <td><span class="crm-badge crm-badge-{{ appointment.status }}">{{ appointment.get_status_display }}</span></td>
             </tr>
           {% empty %}
-            <tr><td colspan="4">Заявок пока нет.</td></tr>
+            <tr><td colspan="4"><div class="crm-empty-v2">Заявок пока нет. Как только клиент отправит форму записи, она появится здесь.</div></td></tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-  </div>
-  <div class="crm-card">
-    <h2 class="h4">Проект</h2>
-    <p>Активных услуг: <strong>{{ services_count }}</strong></p>
-    <p>Активных мастеров: <strong>{{ masters_count }}</strong></p>
-    <a href="{% url 'crm:appointments' %}" class="btn btn-primary">Перейти к заявкам</a>
-  </div>
+  </section>
+
+  <aside class="crm-panel-v2">
+    <div class="crm-panel-head-v2"><h2>Проект</h2></div>
+    <div class="crm-project-list-v2">
+      <p><span>Активных услуг</span><strong>{{ services_count }}</strong></p>
+      <p><span>Активных мастеров</span><strong>{{ masters_count }}</strong></p>
+    </div>
+    <a href="{% url 'admin:index' %}" class="btn btn-outline w-100">Настроить в админке</a>
+  </aside>
 </div>
 {% endblock %}

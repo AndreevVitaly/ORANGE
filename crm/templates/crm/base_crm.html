@@ -1,21 +1,32 @@
 ﻿{% extends "core/base.html" %}
 
 {% block content %}
-<section class="page-section section-alt crm-page">
+<section class="crm-page-v2">
   <div class="container">
-    <div class="crm-shell">
-      <aside class="crm-sidebar">
-        <h2 class="crm-title">CRM</h2>
-        <a href="{% url 'crm:dashboard' %}">Дашборд</a>
-        <a href="{% url 'crm:appointments' %}">Заявки</a>
-        <a href="{% url 'crm:clients' %}">Клиенты</a>
-        <a href="{% url 'admin:index' %}">Django Admin</a>
-        <form method="post" action="{% url 'crm:logout' %}">
+    <div class="crm-layout-v2">
+      <aside class="crm-sidebar-v2">
+        <div class="crm-brand-v2">
+          <span class="crm-brand-mark">A</span>
+          <div>
+            <strong>CRM Апельсин</strong>
+            <small>Панель администратора</small>
+          </div>
+        </div>
+
+        <nav class="crm-nav-v2">
+          <a href="{% url 'crm:dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Дашборд</a>
+          <a href="{% url 'crm:appointments' %}" class="{% if request.resolver_match.url_name == 'appointments' %}active{% endif %}">Заявки</a>
+          <a href="{% url 'crm:clients' %}" class="{% if request.resolver_match.url_name == 'clients' or request.resolver_match.url_name == 'client_detail' %}active{% endif %}">Клиенты</a>
+          <a href="{% url 'admin:index' %}">Django Admin</a>
+        </nav>
+
+        <form method="post" action="{% url 'crm:logout' %}" class="crm-logout-v2">
           {% csrf_token %}
-          <button type="submit" class="btn btn-outline w-100 mt-3">Выйти</button>
+          <button type="submit">Выйти</button>
         </form>
       </aside>
-      <div class="crm-content">
+
+      <div class="crm-main-v2">
         {% block crm_content %}{% endblock %}
       </div>
     </div>
